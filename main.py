@@ -150,4 +150,4 @@ elif choice == "Sell Your Soul to GitHub":
         st.success(result) if result else st.error("Repo creation failed.")
 
 st.sidebar.markdown("---")
-st.sidebar.markdown("This masterpiece was created by yours truly, Srujan. Don't blame me for your mistakes.")
+st.sidebar.markdown("this shit is made by me aka Srujannnn")
