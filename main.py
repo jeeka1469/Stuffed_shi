@@ -14,10 +14,10 @@ from src.git_automation import (
     get_recent_commits, undo_last_commit, create_github_repo, clone_repository
 )
 
-# Set Page Config
+# 🔥 Set Page Config
 st.set_page_config(page_title="No Idea What I'm Doing", layout="wide", initial_sidebar_state="expanded")
 
-# Custom Styling
+# 🎨 Custom Styling
 st.markdown("""
     <style>
         [data-testid="stSidebar"] { background-color: #121212 !important; color: white; padding: 20px; }
@@ -29,118 +29,99 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# App Title
-st.title("random shi")
+# 🤡 App Title
+st.title("Blip: The Ultimate Developer Roast Machine")
 
-# Sidebar UI
+# 🔥 Sidebar UI
 st.sidebar.markdown('<div class="sidebar-title">You Really Messed Up, Didn\'t You?</div>', unsafe_allow_html=True)
-st.sidebar.markdown('<div class="sidebar-text">Pick your mistake:</div>', unsafe_allow_html=True)
+st.sidebar.markdown('<div class="sidebar-text">Pick your disaster:</div>', unsafe_allow_html=True)
 
 options = {
-    "You Should've Known Better": "Modify code like you have no clue what you're doing.",
-    "Add Yet Another Pointless File": "Because the more files, the better, right?",
-    "Delete This Nightmare": "Delete a file that you probably shouldn't have created in the first place.",
-    "Refactor Your 'Masterpiece'": "Turn your coding failure into something slightly less embarrassing.",
-    "Get AI to Pretend You Know What You're Doing": "Generate docs like you actually wrote meaningful code.",
-    "Fix Your 'Beautiful' Formatting": "Lint your code after you destroyed it with random indents.",
-    "Try Fixing This Multi-Language Mess": "Modify multi-language code because you can't even handle one.",
-    "Pretend You Have Standards": "Check code style even though you're too lazy to follow one.",
-    "Analyze Your Addiction to Dependencies": "Take a hard look at your project's bloated dependencies.",
-    "Commit and Regret": "Push your latest spaghetti code to GitHub.",
-    "Beg for a Merge": "Create a pull request and hope no one notices the mess.",
-    "Check How Bad Things Are": "View your Git status and regret everything.",
-    "Jump Between Disasters": "Switch Git branches, because why not?",
-    "Create a Fresh Mess": "Start a new branch to ruin things separately.",
-    "Destroy Your Evidence": "Delete a branch like it never happened.",
-    "Merge the Mayhem": "Merge two branches and pray nothing explodes.",
-    "Rewind Your Regrets": "Undo your last commit and pretend it never happened.",
-    "Stalk Your Past Mistakes": "View your last few commits and cringe at your past self.",
-    "Sell Your Soul to GitHub": "Create a new GitHub repo because why not?",
-    "Steal Someone Else's Work": "Clone a GitHub repo and pretend it's yours."
+    "Modify Your Broken Code": "Patch up your spaghetti mess.",
+    "Add Another Useless File": "Because clutter is your thing.",
+    "Delete Your Shame": "Erase a file like it never existed.",
+    "Refactor Your 'Genius' Code": "Make it slightly less painful to read.",
+    "Generate Docs Like a Pro": "Fake expertise with auto-generated documentation.",
+    "Lint Your Abomination": "Fix your terrible formatting.",
+    "Modify Multi-Language Code": "Because breaking one language wasn’t enough.",
+    "Check Your Coding 'Style'": "See how far you are from decent coding.",
+    "Analyze Your Dependency Addiction": "Spot the 500 libraries you don’t need.",
+    "Commit Your Regrets": "Push your latest mess to GitHub.",
+    "Create a PR and Pray": "Beg for approval on your nonsense.",
+    "Check Git Chaos": "See how bad your repo situation is.",
+    "Jump Between Nightmares": "Switch Git branches because why not?",
+    "Start a Fresh Disaster": "Create a new branch for your sins.",
+    "Delete a Branch and Forget": "Wipe away your git mistakes.",
+    "Merge Your Misery": "Combine two branches and hope for the best.",
+    "Undo Your Last Mistake": "Rewind and pretend nothing happened.",
+    "View Your Past Failures": "See the cringe-worthy commits you've made.",
+    "Sell Your Soul to GitHub": "Create a repo because why not?",
+    "Clone and Claim": "Steal—uh, I mean, clone—a GitHub repo."
 }
 
 choice = st.sidebar.radio("", list(options.keys()), format_func=lambda x: f"{options[x]}")
 
-# Repo Path Input
+# ⚠️ Repo Path Input
 repo_path = st.sidebar.text_input("Enter your repo path:", value="C:/Users/srujan/Blip")
 
-# Task Execution
+# 💥 Task Execution
 st.markdown(f"### {choice}")
 
-if choice == "You Should've Known Better":
+if choice == "Modify Your Broken Code":
     file_path = st.text_input("Enter the file path:")
     instructions = st.text_area("Enter modification instructions:")
     if st.button("Modify Code"):
         result = modify_file(file_path, instructions)
         st.success("Code modified successfully!") if result else st.error("Modification failed.")
 
-elif choice == "Add Yet Another Pointless File":
+elif choice == "Add Another Useless File":
     file_path = st.text_input("Enter the new file path:")
     content = st.text_area("Enter file content (optional):")
     if st.button("Add File"):
         result = add_file(file_path, content)
         st.success("File added successfully.") if result else st.error("File creation failed.")
 
-elif choice == "Delete This Nightmare":
+elif choice == "Delete Your Shame":
     file_path = st.text_input("Enter the file path to delete:")
     if st.button("Delete File"):
         result = delete_file(file_path)
         st.warning("File deleted successfully!") if result else st.error("File not found.")
 
-elif choice == "Refactor Your 'Masterpiece'":
+elif choice == "Refactor Your 'Genius' Code":
     file_path = st.text_input("Enter the file path to refactor:")
     if st.button("Refactor Code"):
         result = refactor_repo(file_path)
         st.success("Code refactored successfully!") if result else st.error("Refactoring failed.")
 
-elif choice == "Get AI to Pretend You Know What You're Doing":
+elif choice == "Generate Docs Like a Pro":
     file_path = st.text_input("Enter the file path:")
     if st.button("Generate Docs"):
         result = generate_docs(file_path)
-        st.success("Documentation generated successfully.") if result else st.error("Failed to generate docs.")
+        st.success("Docs generated successfully!") if result else st.error("Failed to generate docs.")
 
-elif choice == "Commit and Regret":
-    commit_message = st.text_input("Enter commit message:", value="🚀 Auto-commit via Blip")
+elif choice == "Commit Your Regrets":
+    commit_message = st.text_input("Enter commit message:", value="🚀 Another questionable commit via Blip")
     if st.button("Commit Changes"):
         result = commit_changes(repo_path, commit_message)
         st.success(result) if result else st.error("Commit failed.")
 
-elif choice == "Beg for a Merge":
+elif choice == "Create a PR and Pray":
     pr_title = st.text_input("Enter PR title:", value="AI-Generated Fixes")
     pr_description = st.text_area("Enter PR description:", value="This PR includes AI-optimized code and fixes.")
     if st.button("Create Pull Request"):
         result = create_pull_request(repo_path, pr_title, pr_description)
         st.success(result) if result else st.error("Failed to create PR.")
 
-elif choice == "Check How Bad Things Are":
+elif choice == "Check Git Chaos":
     if st.button("Check Git Status"):
         result = check_git_status(repo_path)
         st.text(result)
 
-elif choice == "Jump Between Disasters":
+elif choice == "Jump Between Nightmares":
     branch_name = st.text_input("Enter branch name to switch to:")
     if st.button("Switch Branch"):
         result = switch_branch(repo_path, branch_name)
         st.success(result) if result else st.error("Failed to switch branches.")
-
-elif choice == "Create a Fresh Mess":
-    branch_name = st.text_input("Enter new branch name:")
-    if st.button("Create Branch"):
-        result = create_branch(repo_path, branch_name)
-        st.success(result) if result else st.error("Branch creation failed.")
-
-elif choice == "Destroy Your Evidence":
-    branch_name = st.text_input("Enter branch name to delete:")
-    if st.button("Delete Branch"):
-        result = delete_branch(repo_path, branch_name)
-        st.warning(result) if result else st.error("Branch deletion failed.")
-
-elif choice == "Merge the Mayhem":
-    source_branch = st.text_input("Enter source branch:")
-    target_branch = st.text_input("Enter target branch:", value="main")
-    if st.button("Merge Branches"):
-        result = merge_branches(repo_path, source_branch, target_branch)
-        st.success(result) if result else st.error("Merge failed.")
 
 elif choice == "Sell Your Soul to GitHub":
     repo_name = st.text_input("Enter GitHub repo name:")
@@ -148,6 +129,78 @@ elif choice == "Sell Your Soul to GitHub":
     if st.button("Create GitHub Repo"):
         result = create_github_repo(repo_name, description)
         st.success(result) if result else st.error("Repo creation failed.")
+        
+elif choice == "Clone and Claim":
+    repo_url = st.text_input("Enter GitHub repo URL:")
+    clone_path = st.text_input("Enter clone destination path:")
+    if st.button("Clone Repository"):
+        result = clone_repository(repo_url, clone_path)
+        st.success(result) if result else st.error("Failed to clone repo.")
+
+elif choice == "Start a Fresh Disaster":
+    branch_name = st.text_input("Enter new branch name:")
+    if st.button("Create Branch"):
+        result = create_branch(repo_path, branch_name)
+        st.success(result) if result else st.error("Failed to create branch.")
+        
+elif choice == "Delete a Branch and Forget":
+    branch_name = st.text_input("Enter branch name to delete:")
+    if st.button("Delete Branch"):
+        result = delete_branch(repo_path, branch_name)
+        st.success(result) if result else st.error("Failed to delete branch.")
+
+elif choice == "Merge Your Misery":
+    base_branch = st.text_input("Enter base branch name:")
+    compare_branch = st.text_input("Enter branch to merge:")
+    if st.button("Merge Branches"):
+        result = merge_branches(repo_path, base_branch, compare_branch)
+        st.success(result) if result else st.error("Failed to merge branches.")
+
+elif choice == "Undo Your Last Mistake":
+    if st.button("Undo Last Commit"):
+        result = undo_last_commit(repo_path)
+        st.success(result) if result else st.error("Failed to undo last commit.")
+
+elif choice == "View Your Past Failures":
+    st.text("Here are your past commits:")
+    result = get_recent_commits(repo_path)
+    st.text(result if result else "No commits found.")
+
+elif choice == "Modify Multi-Language Code":
+    file_path = st.text_input("Enter the file path:")
+    instructions = st.text_area("Enter modification instructions:")
+    if st.button("Modify Code"):
+        result = modify_code_multilang(file_path, instructions)
+        st.success("Code modified successfully!") if result else st.error("Modification failed.")
+
+elif choice == "Check Your Coding 'Style'":
+    code_style = detect_code_style(repo_path)
+    st.text(f"Detected Code Style: {code_style}" if code_style else "Failed to detect code style.")
+
+elif choice == "Analyze Your Dependency Addiction":
+    result = analyze_dependencies(repo_path)
+    st.text(result if result else "No dependencies found.")
+    
+elif choice == "Lint Your Abomination":
+    if st.button("Lint Code"):
+        result = lint_code(repo_path)
+        st.success("Code linted successfully!") if result else st.error("Linting failed.")
+        
+elif choice == "Add Another Useless File":
+    file_path = st.text_input("Enter the new file path:")
+    content = st.text_area("Enter file content (optional):")
+    if st.button("Add File"):
+        result = add_file(file_path, content)
+        st.success("File added successfully.") if result else st.error("File creation failed.")
+
+elif choice == "Delete Your Shame":
+    file_path = st.text_input("Enter the file path to delete:")
+    if st.button("Delete File"):
+        result = delete_file(file_path)
+        st.warning("File deleted successfully!") if result else st.error("File not found.")
+
+elif choice == "Refactor Your 'Genius' Code":
+    st.text("Refactor option selected, but no action defined.")
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("this shit is made by me aka Srujannnn")
